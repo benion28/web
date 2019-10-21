@@ -1,0 +1,154 @@
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <input 
+    ngModel
+    name="firstname"
+    #firstname="ngModel"
+    matInput 
+    placeholder="First Name" 
+    value="" 
+    required>
+    <mat-error *ngIf="firstname.invalid && firstname.errors.required">
+      This First Name Field Is Required.. 
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+     <input 
+     ngModel
+     name="lastname"
+     #lastname="ngModel"
+     matInput 
+     placeholder="Last Name" 
+     value="" 
+     required>
+     <mat-error *ngIf="lastname.invalid && lastname.errors.required">
+      This Last Name Field Is Required.. 
+    </mat-error>
+  </mat-form-field><p></p>
+
+  <mat-form-field class="example-full-width">
+    <textarea matInput placeholder="About Yourself"></textarea>
+  </mat-form-field>
+</form><p></p>
+
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <input 
+    ngModel
+    name="email"
+    #email="ngModel"
+    matInput 
+    placeholder="Select Mail" 
+    value="" 
+    required>
+    <mat-hint>Select A Unique Name For Email. </mat-hint>
+	  <span matSuffix>@domain.com</span>
+    <span matPrefix>admin.</span>
+    <mat-error *ngIf="email.invalid && email.errors.required">
+      This Mail Field Is Required.. 
+    </mat-error>  
+  </mat-form-field>
+</form><p></p>
+
+
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <input 
+    ngModel
+    name="choosepassword"
+    #choosepassword="ngModel"
+    matInput 
+    placeholder="Choose Password" 
+    type="password" 
+    value="" 
+    required>
+    <mat-hint>Password Should Be More Than 8 Characters </mat-hint>
+    <mat-error *ngIf="choosepassword.invalid && choosepassword.errors.required">
+      Password Is Required.. 
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input 
+    ngModel
+    name="confirmpassword"
+    #confirmpassword="ngModel"
+    matInput 
+    placeholder="Confirm Password" 
+    type="password" 
+    value="" 
+    required>
+    <mat-hint>Passwords Should Be Thesame </mat-hint>
+    <mat-error *ngIf="confirmpassword.invalid && confirmpassword.errors.required">
+      Confirmation Required.. 
+    </mat-error>
+  </mat-form-field>
+</form><p></p>
+
+<mat-radio-group value="0">
+	<mat-radio-button value="1">Male</mat-radio-button>
+	<mat-radio-button value="0">Female</mat-radio-button>
+</mat-radio-group>
+<p></p>
+
+
+<mat-form-field>
+  <mat-label>Select Color</mat-label>
+  <mat-select 
+  [value]="" 
+  required>
+    <mat-option 
+    *ngFor="let color of colors" 
+    [value]="color.id">
+      {{color.name}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<p></p>
+
+
+<mat-form-field>
+  <input 
+  ngModel
+  name="choosebirthday"
+  #choosebirthday="ngModel"
+  matInput 
+  [matDatepicker]="picker" 
+  placeholder="Choose Your Birth Date" 
+  required>
+  <mat-datepicker-toggle 
+  matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker 
+  #picker 
+  color="warn"></mat-datepicker>
+  <mat-hint>Password Should Be More Than 8 Characters </mat-hint>
+    <mat-error *ngIf="choosebirthday.invalid && choosebirthday.errors.required">
+      Birth Date Is Required.. 
+    </mat-error>
+</mat-form-field>
+<p></p>
+
+
+<mat-checkbox
+  value=""
+  #showDetails
+  [checked]="isChecked"
+  (change)="onChange($event)"
+>
+	Accept Terms And Condition..??
+</mat-checkbox>
+<div *ngIf="showDetails.checked">
+	Thanks For Accepting... 
+</div>
+<p></p>
+
+<button mat-button [matMenuTriggerFor]="menu">Menu</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item routerLinkActive="active"><a routerLink="/courses">Benion Courses</a></button>
+  <button mat-menu-item routerLinkActive="active"><a routerLink="/directives">Benion Directives</a></button>
+  <button mat-menu-item routerLinkActive="active"><a routerLink="/forms">Benion Forms</a></button>
+  <button mat-menu-item routerLinkActive="active"><a routerLink="/animations">Benion Animations</a></button>
+  <button mat-menu-item routerLinkActive="active"><a routerLink="/form">Benion Form</a></button>
+  <button mat-menu-item routerLinkActive="active"><a routerLink="/firebase">Benion Firebase</a></button>
+</mat-menu>

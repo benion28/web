@@ -1,0 +1,60 @@
+<form>
+  <div class="form-group">
+    <label for="firstName">First Name</label>
+    <input
+      required
+      minlength="3"
+      maxlength="10"
+      appForbiddenName="Iorver"
+      ngModel
+      name="firstName"
+      #firstName="ngModel"
+      (change)="getName(firstName)"
+      id="firstName"
+      type="text"
+      class="form-control"
+    />
+    <div
+      class="alert alert-danger"
+      *ngIf="firstName.invalid && (firstName.touched || firstName.dirty)"
+    >
+      <div *ngIf="firstName.errors.required">First Name Is Required.</div>
+      <div *ngIf="firstName.errors.minlength">
+        First Name Should Be A Minimum Of {{ firstName.errors.minlength.requiredLength }} Characters And Not More Than 10 Characters.
+      </div>
+      <div *ngIf="firstName.errors.forbiddenName">
+          First Name Cannot Be "Iorver".
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="comment">Comment</label>
+    <textarea
+      ngModel
+      required
+      minlength="6"
+      maxlength="10"
+      pattern="Benion"
+      name="comment"
+      #comment="ngModel"
+      (change)="getComment(comment)"
+      id="comment"
+      cols="30"
+      rows="10"
+      class="form-control"
+    ></textarea>
+    <div
+      class="alert alert-danger"
+      *ngIf="comment.touched && !comment.valid"
+    >
+      <div *ngIf="comment.errors.required">Comment Field Is Required.</div>
+      <div *ngIf="comment.errors.minlength">
+        Comment Should Be A Minimum Of {{ comment.errors.minlength.requiredLength }} Characters And Not More Than 10 Characters.
+      </div>
+      <div *ngIf="comment.errors.pattern">
+        Comment Doesn't Match The Pattern.
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-primary">Submit</button>
+</form>

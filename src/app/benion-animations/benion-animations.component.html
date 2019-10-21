@@ -1,0 +1,16 @@
+<input 
+  #itemInput 
+  class="form-control" 
+  (keyup.enter)="addItems(itemInput)" />
+
+<div *ngIf="todoLists" class="list-group">
+  <button
+    type="button"
+    @fade
+    *ngFor="let todoList of todoLists"
+    (click)="removeItems(todoList)"
+    class="list-group-item"
+  >
+    {{ todoList }}
+  </button>
+</div>
